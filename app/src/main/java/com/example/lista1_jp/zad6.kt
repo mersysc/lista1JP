@@ -49,13 +49,91 @@ package com.example.lista1_jp
  * które zademonstruja poprawne rozwiazanie problemów.
  *
  * Sources:
+ * ChatGPT - funkcja odwracajaca reversed()
  */
 
 
-fun komplement(){
-    
+/**
+ * Funkcja tworzy nic komplementarna matrycowa dla nici kodujacej DNA
+ * wedlug zasad komplementarnosci zasady lacza sie wzajemnie w pary:
+ * adenina (A) z tymia (T) oraz guanina (G) z cytozyna (C)
+ *
+ * @param nicKodujaca [String] - ciag znakow skladajacy sie z liter A, C,
+ * T, G, ktore kolejno reprezentuja zasady: adenina, cytozyna,
+ * tymina i guanina
+ * @return nicMatrycowa [String] - ciag znakow komplementarny do nici
+ * kodujacej
+ * @throws IllegalArgumentException jesli nic kodujaca jest pustym ciagiem
+ * znakow lub zawiera niepoprawne znaki
+ */
+fun komplement(nicKodujaca: String): String {
+    val nic = nicKodujaca.uppercase()
+    var nicMatrycowa = ""
+
+    if (nic.isNotEmpty()) {
+        for (char in nic) {
+            when (char) {
+                'A' -> nicMatrycowa += "T"
+                'T' -> nicMatrycowa += "A"
+                'G' -> nicMatrycowa += "C"
+                'C' -> nicMatrycowa += "G"
+                else -> throw IllegalArgumentException("STOP -> twoja nic " +
+                        "kodujaca moze zawierac tylko znaki: A, G, C, T.")
+            }
+        }
+        return nicMatrycowa
+    } else {
+        throw IllegalArgumentException("Nic kodujaca nie moze byc pusta!")
+    }
 }
 
+
+/**
+ * Funkcja wykonuje transkrypcje nici matrycowej do sekwencji RNA,
+ * odwraca nic matrycowa do odczytu od 3' do 5', a nastepnie przepisuje
+ * na rna wedlug zasad laczenia zasad: adenina (A) z uracylem (U),
+ * tymina (T) z adenina (A), guanina (G) z cytozyna (C) oraz
+ * cytozyna (C) z guanina (G)
+ *
+ * @param nicmatrycowa [String] - ciag znakow reprezentujacy nic matrycowa
+ * @return [String] sekwencja RNA gotowa do odczytu
+ * @throws IllegalArgumentException jesli nic matrycowa jest pustym ciagiem
+ * znakow lub zawiera niepoprawne znaki
+ */
+fun transkrybuj(nicmatrycowa: String): String{
+    // przyjmujemy ze nicmatrycowa podawana jest od 3' do 5'
+    val nicM = nicmatrycowa.reversed().uppercase()
+    var rna = ""
+
+    if (nicM.isNotEmpty()){
+        for(char in nicM){
+
+                when (char) {
+                    'A' -> rna += "U"
+                    'T' -> rna += "A"
+                    'G' -> rna += "C"
+                    'C' -> rna += "G"
+                    else ->  throw IllegalArgumentException("STOP -> twoja" +
+                            " nic matrycowa zawiera niepoprawne znaki")
+            }
+        }
+        return rna
+    }else {
+        throw IllegalArgumentException("Nic matrycowa nie moze byc pusta!")
+    }
+}
+
+
+
 fun main(){
+    val nicMatrycowa = komplement("AGGGCT")
+    val nicRNA = transkrybuj(nicMatrycowa)
+    println("Dla nici matrycowej: $nicMatrycowa, transkrypcja " +
+            "zwrocila nic RNA zakodowana: $nicRNA.")
+
+    println(komplement("AGGGCT"))
+    println(komplement("AgAtAcc"))
+    println(komplement("ag1gcta"))
+    println(komplement(""))
 
 }
