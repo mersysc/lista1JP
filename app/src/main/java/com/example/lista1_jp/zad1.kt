@@ -17,6 +17,40 @@ import kotlin.math.sqrt
  *
  */
 
+
+/**
+ * Funkcja dla zadanych bokow trojkata a, b, c
+ * zwraca pole S wykorzystujac wzor Herona
+ *
+ * @param a [Double] - dlugosc pierwszego boku trojkata
+ * @param b [Double] - dlugosc drugiego boku trojkata
+ * @param c [Double] - dlugosc trzeciego boku trojkata
+ *
+ * @return [Double] pole trojkata z wzoru herona
+ * @throws IllegalArgumentException jesli z podanej
+ * dlugosci bokow nie mozna stworzyc trojkata lub
+ * ich wartosci sa mniejsze lub rowne 0.
+ */
+@SuppressLint("SuspiciousIndentation")
+fun heron(a: Double, b: Double, c: Double): Double {
+    var S = 0.0
+
+    if ((a <= 0) || (b <= 0) || (c <= 0)) {
+        throw IllegalArgumentException(
+            "Bok nie moze byc mniejszy od 0")
+    } else if (a + b < c || a + c < b || b + c < a) {
+        throw IllegalArgumentException(
+            "Suma dlugosci dwoch krotszych bokow musi byc" +
+                    " wieksza od dlugosci trzeciego boku ")
+    } else {
+        val p = 0.5 * (a + b + c)
+        S = sqrt(p * (p - a) * (p - b) * (p - c))
+        return S
+    }
+}
+
+
+
 fun main(){
 
     // kiedy suma krotszych bokow jest mniejsza od trzeciego
@@ -34,34 +68,4 @@ fun main(){
     // kiedy jeden z bokow wynosi 0
     wynik = heron(10.0, 10.0, 0.0)
     println("Pole trojkata: $wynik \n")
-}
-
-
-/**
- * Funkcja dla zadanych bokow trojkata a, b, c
- * zwraca pole S wykorzystujac wzor Herona
- *
- * @param a dlugosc pierwszego boku trojkata [Double]
- * @param b dlugosc drugiego boku trojkata  [Double]
- * @param c dlugosc trzeciego boku trojkata  [Double]
- *
- * @return S
- */
-@SuppressLint("SuspiciousIndentation")
-fun heron(a: Double, b: Double, c: Double): Double {
-    var S = 0.0
-
-        if ((a <= 0) || (b <= 0) || (c <= 0)) {
-            println("Bok nie moze byc mniejszy od 0")
-            return S
-        } else if (a + b < c || a + c < b || b + c < a) {
-            println(
-                "Suma dlugosci dwoch krotszych bokow musi byc" +
-                        " wieksza od dlugosci trzeciego boku ")
-            return S
-        } else {
-            val p = 0.5 * (a + b + c)
-            S = sqrt(p * (p - a) * (p - b) * (p - c))
-            return S
-        }
 }
