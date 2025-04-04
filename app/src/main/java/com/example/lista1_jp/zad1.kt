@@ -14,7 +14,9 @@ import kotlin.math.sqrt
  *
  * Sources:
  * https://pl.wikipedia.org/wiki/Wz%C3%B3r_Herona -> wzór Herona
- *
+ * https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/assert.html
+ * ChatGPT -> co zrobic zeby komunikat przy blednej assercji sie pokazywal
+ * https://developer.android.com/reference/android/annotation/SuppressLint
  */
 
 
