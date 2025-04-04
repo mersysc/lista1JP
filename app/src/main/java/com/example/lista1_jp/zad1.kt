@@ -49,23 +49,54 @@ fun heron(a: Double, b: Double, c: Double): Double {
     }
 }
 
+/**
+ * Funkcja testujaca funkcje heron()
+ * @return ilosc bledow w wykonanych testach
+ */
+fun testHeron(): Int{
+    var counter = 0
+    // suma dwoch krotszych bokow jest mniejsza od
+    // najdluzszego boku tego trojkata
+    try {
+        heron(1.0, 12.0, 9.0)
+        println("Test nie rzuca wyjatku - bledne")
+        counter++
+    } catch (e: IllegalArgumentException) {
+        println("Test rzuca wyjatek - poprawne")
+    }
+
+    // kiedy wszystko dziala prawidlowo
+    try {
+        val wynik1 = heron(3.0, 4.0, 5.0)
+        assert(wynik1 == 6.0) {
+            counter++
+        }
+    }catch (e:AssertionError){
+        println("Test rzuca wyjatek - niepoprawne")
+    }
+
+    // kiedy jeden z bokow jest ujemny
+    try {
+        heron(9.0, -10.0, 10.0)
+        println("Test nie rzuca wyjatku - bledne")
+        counter++
+    } catch (e: IllegalArgumentException) {
+        println("Test rzuca wyjatek - poprawne")
+    }
+
+    // kiedy jeden z bokow wynosi 0
+    try {
+        heron(9.0, 0.0, 10.0)
+        println("Test nie rzuca wyjatku - bledne")
+        counter++
+    } catch (e: IllegalArgumentException) {
+        println("Test rzuca wyjatek - poprawne")
+    }
+    return counter
+}
 
 
 fun main(){
-
-    // kiedy suma krotszych bokow jest mniejsza od trzeciego
-    var wynik = heron(1.0, 12.0, 9.0)
-    println("Pole trojkata: $wynik \n")
-
-    // kiedy wszystko dziala prawidlowo
-    wynik = heron(10.0, 10.0, 10.0)
-    println("Pole trojkata: $wynik \n")
-
-    // kiedy jeden z bokow jest ujemny
-    wynik = heron(9.0, -10.0, 10.0)
-    println("Pole trojkata: $wynik \n")
-
-    // kiedy jeden z bokow wynosi 0
-    wynik = heron(10.0, 10.0, 0.0)
-    println("Pole trojkata: $wynik \n")
+    val count = testHeron()
+    println("Ilosc niepoprawnych testow: $count")
 }
