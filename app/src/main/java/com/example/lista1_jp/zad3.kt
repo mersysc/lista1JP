@@ -34,7 +34,6 @@ fun podzbiory(zbior: List<String>): MutableList<List<String>> {
     // petla dla kazdego elementu ze zbioru
     for (i in zbior) {
         val nastepny: MutableList<List<String>> = mutableListOf()
-        // dla
         for (j in listaPodzbiorow) {
             val nowy = j + i
             nastepny.add(nowy)
@@ -50,4 +49,3 @@ fun main(){
     println(podzbiory(zbior))
 
 }
-// wykonac wszystkie mozlliwe podzbiory z pierwszym elementem

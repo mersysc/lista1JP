@@ -13,8 +13,10 @@ import kotlin.collections.MutableList
  * wspólna. Funkcja powinna sprawdzac poprawnosc argumentów.
  *
  * Sources:
- * wikipedia - definicja multizbioru
+ * https://pl.wikipedia.org/wiki/Multizbi%C3%B3r - definicja multizbioru
+ *
  */
+
 
 /**
  * Funkcja wyznacza czesc wspolna dwoch multizbiorow
