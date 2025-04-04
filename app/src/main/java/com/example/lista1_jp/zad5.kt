@@ -1,10 +1,7 @@
 package com.example.lista1_jp
-import androidx.collection.MutableIntList
-import androidx.collection.MutableIntSet
 
 /**
  * @author: Maria Cicirko
- *
  *
  * Zadanie 5
  * Napisz funkcje collatz, która dla zadanego parametru c0 obliczy
@@ -20,8 +17,8 @@ import androidx.collection.MutableIntSet
  * maksymalna długosc ciagu — przed wpadnieciem ciagu w cykl, a takze
  * odpowiadajace im wartosci c0.
  *
- *
  */
+
 
 /**
  * Funkcja dla dowolnego parametru c0 wykonuje operacje
@@ -30,6 +27,7 @@ import androidx.collection.MutableIntSet
  * @param c0 [Int] - dodatnia liczba calkowita lub mniejsza od zera
  * @return [MutableList<Int>] lista elementow ciagu przed wpadnieciem
  * w cykl (4,2,1)
+ * @throws IllegalArgumentException jesli element jest mniejszy od 1
  */
 fun collatz(c0: Int): MutableList<Int>{
     if(c0<1){
@@ -48,8 +46,8 @@ fun collatz(c0: Int): MutableList<Int>{
         }
     }
     return tab
-
 }
+
 
 fun main(){
     var c0 = 20
