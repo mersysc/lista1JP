@@ -44,6 +44,7 @@ fun podzbiory(zbior: List<String>): MutableList<List<String>> {
     return listaPodzbiorow
 }
 
+
 fun main(){
     val zbior = listOf("a", "b", "c")
     println(podzbiory(zbior))

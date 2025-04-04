@@ -41,8 +41,7 @@ fun loopFibbonacci(n: Int): IntArray{
         newArray[0] = 0
         return newArray
     }else{
-        println("Liczba elementow nie moze byc ujemna lub rowna 0")
-        return newArray
+        throw IllegalArgumentException("Liczba elementow nie moze byc ujemna lub rowna 0")
     }
 }
 

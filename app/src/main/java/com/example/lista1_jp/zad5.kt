@@ -20,11 +20,17 @@ import androidx.collection.MutableIntSet
  * maksymalna długosc ciagu — przed wpadnieciem ciagu w cykl, a takze
  * odpowiadajace im wartosci c0.
  *
- * Sources:
  *
  */
 
-
+/**
+ * Funkcja dla dowolnego parametru c0 wykonuje operacje
+ * ciagu colatza
+ *
+ * @param c0 [Int] - dodatnia liczba calkowita lub mniejsza od zera
+ * @return [MutableList<Int>] lista elementow ciagu przed wpadnieciem
+ * w cykl (4,2,1)
+ */
 fun collatz(c0: Int): MutableList<Int>{
     if(c0<1){
         throw IllegalArgumentException("Element c0 musi byc wiekszy" +
@@ -46,7 +52,7 @@ fun collatz(c0: Int): MutableList<Int>{
 }
 
 fun main(){
-    var c0 = 47
+    var c0 = 20
     val result = collatz(c0)
     val dlugosc = result.size - 3 // nie wliczamy 3 ostatnich bo to cykl
     val max = result.max()
